@@ -10,7 +10,7 @@ const AsyncWait = (waitSec) =>
     setTimeout(resolve, ((Math.random() * waitSec) | 0) * 1234)
   );
 
-const DownloadImage = async (filePath, folderPath, thumb = false) => {
+const DownloadImage = async (filePath, folderPath='', thumb = false) => {
   const header = thumb
     ? {
         "user-agent":
@@ -26,14 +26,14 @@ const DownloadImage = async (filePath, folderPath, thumb = false) => {
           "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:79.0) Gecko/20100101 Firefox/79.0",
         origin: "https://www.meipian.cn",
         host: "static2.ivwen.com",
-        referer: `https://www.meipian.cn/c/${usrId}`,
+        referer: `https://www.meipian.cn`,
         dnt: 1,
       };
 
   const regexS = /http:\/\/\S+\/(\S+)\.(\S+)/gi.exec(filePath);
   const fileName = regexS[1];
   const ext = regexS[2];
-  const newPath = `./Data/Images/${folderPath}/${fileName}.${ext}`;
+  const newPath = `./Data/Images/${folderPath}${fileName}.${ext}`;
   console.log(`Downloading and Saving ${filePath}`);
   await pipeline(
     got.stream(`${filePath}${thumb ? "-thumb" : ""}`, header),
