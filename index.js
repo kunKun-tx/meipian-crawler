@@ -111,7 +111,7 @@ const GetUserInfoAndArticleMeta = async (usrId) => {
   let idx = 1;
   for await (const article of articles) {
     console.log(`Download ${idx}/${articleCount} preview images`);
-    article.cover_img_url = await DownloadImage(article.cover_img_url, 'thumb', true);
+    article.cover_img_url = await DownloadImage(article.cover_img_url, 'thumb/', true);
     idx +=1
     // let's not trigger the rate limiter
     await AsyncWait(4);
