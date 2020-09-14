@@ -1,0 +1,13 @@
+{
+  "name": "meipian-crawler",
+  "version": "0.0.1",
+  "description": "One-off scripts to crawl meipian.cn",
+  "main": "index.js",
+  "repository": "https://github.com/kunKun-tx/meipian-crawler",
+  "author": "kunKun-tx",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.3",
+    "got": "^11.6.2"
+  }
+}
